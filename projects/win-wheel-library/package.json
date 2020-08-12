@@ -1,0 +1,13 @@
+{
+  "name": "@shubhrank/win-wheel-library",
+  "version": "0.0.1",
+  "peerDependencies": {
+    "@angular/common": "^10.0.6",
+    "@angular/core": "^10.0.6"
+  },
+  "dependencies": {
+    "gsap": "^2.1.3",
+    "tslib": "^2.0.0",
+    "winwheel": "^1.0.1"
+  }
+}

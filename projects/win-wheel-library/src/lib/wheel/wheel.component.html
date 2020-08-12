@@ -1,0 +1,37 @@
+<div style="text-align: center">
+  <p>Choose a power setting then press the Spin button.</p>
+</div>
+<div style="text-align: center; margin: 0 auto;">
+  <table border="0" cellpadding="0" cellspacing="0" style="margin: 0 auto;">
+    <tr>
+      <td>
+        <div class="power_controls" style="text-align: center">
+          <table cellpadding="10" cellspacing="0" class="power">
+            <tr>
+              <th align="center">Power</th>
+            </tr>
+            <tr>
+              <td (click)="powerSelected(3);" align="center" id="pw3" width="78">High</td>
+            </tr>
+            <tr>
+              <td (click)="powerSelected(2);" align="center" id="pw2">Med</td>
+            </tr>
+            <tr>
+              <td (click)="powerSelected(1);" align="center" id="pw1">Low</td>
+            </tr>
+          </table>
+          <div style="text-align: center; padding-top: 1rem;">
+            <img (click)="calculatePrize()" [src]="buttonImage" alt="Spin" id="spin_button"/></div>
+          <div style="text-align: center; padding-top: 1rem;">
+            <a (click)="resetWheel()" href="#">Play Again</a>
+          </div>
+        </div>
+      </td>
+      <td align="center" class="the_wheel" height="582" valign="center" width="438">
+        <canvas (click)="getSegment($event)" height="434" id="canvas" width="434">
+          <p align="center" style="{color: white}">Sorry, your browser doesn't support canvas. Please try another.</p>
+        </canvas>
+      </td>
+    </tr>
+  </table>
+</div>

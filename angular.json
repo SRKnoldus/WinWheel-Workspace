@@ -1,0 +1,168 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "winWheel-consumer": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/winWheel-consumer",
+      "sourceRoot": "projects/winWheel-consumer/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/winWheel-consumer",
+            "index": "projects/winWheel-consumer/src/index.html",
+            "main": "projects/winWheel-consumer/src/main.ts",
+            "polyfills": "projects/winWheel-consumer/src/polyfills.ts",
+            "tsConfig": "projects/winWheel-consumer/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "projects/winWheel-consumer/src/favicon.ico",
+              "projects/winWheel-consumer/src/assets"
+            ],
+            "styles": [
+              "projects/winWheel-consumer/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/winWheel-consumer/src/environments/environment.ts",
+                  "with": "projects/winWheel-consumer/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "winWheel-consumer:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "winWheel-consumer:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "winWheel-consumer:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/winWheel-consumer/src/test.ts",
+            "polyfills": "projects/winWheel-consumer/src/polyfills.ts",
+            "tsConfig": "projects/winWheel-consumer/tsconfig.spec.json",
+            "karmaConfig": "projects/winWheel-consumer/karma.conf.js",
+            "assets": [
+              "projects/winWheel-consumer/src/favicon.ico",
+              "projects/winWheel-consumer/src/assets"
+            ],
+            "styles": [
+              "projects/winWheel-consumer/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/winWheel-consumer/tsconfig.app.json",
+              "projects/winWheel-consumer/tsconfig.spec.json",
+              "projects/winWheel-consumer/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/winWheel-consumer/e2e/protractor.conf.js",
+            "devServerTarget": "winWheel-consumer:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "winWheel-consumer:serve:production"
+            }
+          }
+        }
+      }
+    },
+    "winWheel-library": {
+      "projectType": "library",
+      "root": "projects/win-wheel-library",
+      "sourceRoot": "projects/win-wheel-library/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/win-wheel-library/tsconfig.lib.json",
+            "project": "projects/win-wheel-library/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/win-wheel-library/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/win-wheel-library/src/test.ts",
+            "tsConfig": "projects/win-wheel-library/tsconfig.spec.json",
+            "karmaConfig": "projects/win-wheel-library/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/win-wheel-library/tsconfig.lib.json",
+              "projects/win-wheel-library/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    }},
+  "defaultProject": "winWheel-consumer"
+}
